@@ -17,19 +17,28 @@ const useStorageState = (key, initialState) => {
 
 const App = () => {
   const [todoList, setTodoList] = useStorageState("todolist", []);
-  const [newTodo, setNewTodo] = useState("");
+  const [newTodoTitle, setNewTodoTitle] = useState("");
+  const [newTodoDescription, setNewTodoDescription] = useState("");
 
-  const handNewTodoChange = (event) => setNewTodo(event.target.value);
+  const handNewTodoTitleChange = (event) => setNewTodoTitle(event.target.value);
+  const handleNewTodoDescriptionChange = (event) =>
+    setNewTodoDescription(event.target.value);
 
   const handleNewTodoSubmit = (event) => {
     event.preventDefault();
 
-    if (!newTodo) return;
+    if (!newTodoTitle) return;
 
-    const todo = { todo: newTodo, id: Date.now(), complete: false };
+    const todo = {
+      title: newTodoTitle,
+      description: newTodoDescription,
+      id: Date.now(),
+      complete: false,
+    };
 
     setTodoList([todo, ...todoList]);
-    setNewTodo("");
+    setNewTodoTitle("");
+    setNewTodoDescription("");
   };
 
   const handleMarkTodoDone = (id) => {
@@ -51,8 +60,10 @@ const App = () => {
     <>
       <Heading title={"metodo"} />
       <AddNewTodo
-        newTodo={newTodo}
-        onNewTodoChange={handNewTodoChange}
+        newTodoTitle={newTodoTitle}
+        newTodoDescription={newTodoDescription}
+        onNewTodoTitleChange={handNewTodoTitleChange}
+        onNewTodoDescriptionChange={handleNewTodoDescriptionChange}
         onNewTodoSubmit={handleNewTodoSubmit}
       />
       <TodoList

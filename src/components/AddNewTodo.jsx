@@ -1,16 +1,29 @@
-const AddNewTodo = ({ newTodo, onNewTodoChange, onNewTodoSubmit }) => {
+const AddNewTodo = ({
+  newTodoTitle,
+  newTodoDescription,
+  onNewTodoTitleChange,
+  onNewTodoDescriptionChange,
+  onNewTodoSubmit,
+}) => {
   return (
     <>
       <form onSubmit={onNewTodoSubmit}>
-        <label htmlFor="newtodo">New item:</label>
+        <label htmlFor="todo-title">New item:</label>
         <input
           type="text"
-          name="newtodo"
-          id="newtodo"
-          value={newTodo}
-          onChange={onNewTodoChange}
+          name="todo-title"
+          id="todo-title"
+          value={newTodoTitle}
+          onChange={onNewTodoTitleChange}
+          required
         />
-        <button type="submit" disabled={!newTodo}>
+        <label htmlFor="todo-description">Description</label>
+        <textarea
+          name="todo-description"
+          id="todo-description"
+          value={newTodoDescription}
+          onChange={onNewTodoDescriptionChange}></textarea>
+        <button type="submit" disabled={!newTodoTitle}>
           Add
         </button>
       </form>
