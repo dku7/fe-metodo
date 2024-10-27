@@ -3,10 +3,12 @@ import AddNewTodo from "./components/AddNewTodo.jsx";
 import TodoList from "./components/TodoList.jsx";
 
 const useStorageState = (key, initialState) => {
-  const [value, setValue] = useState(localStorage.getItem(key) || initialState);
+  const [value, setValue] = useState(
+    JSON.parse(localStorage.getItem(key)) || initialState
+  );
 
   useEffect(() => {
-    localStorage.setItem(key, value);
+    localStorage.setItem(key, JSON.stringify(value));
   }, [value, key]);
 
   return [value, setValue];
@@ -23,14 +25,17 @@ const App = () => {
 
     if (!newTodo) return;
 
-    setTodoList([newTodo, ...todoList]);
+    const todo = { todo: newTodo, id: Date.now(), complete: false };
+
+    setTodoList([todo, ...todoList]);
     setNewTodo("");
   };
 
-  const handleMarkTodoDone = (todo) => {
-    const newTodoList = todoList.filter(
-      (item, index) => `${item}-${index}` !== todo.id
-    );
+  const handleMarkTodoDone = (id) => {
+    const newTodoList = [...todoList];
+
+    const todo = newTodoList.find((todo) => todo.id === id);
+    todo.complete = true;
 
     setTodoList(newTodoList);
   };
