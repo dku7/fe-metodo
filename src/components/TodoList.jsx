@@ -19,7 +19,7 @@ const TodoList = ({ heading, todoList, onDoItem, onDeleteItem, isVisible }) => {
         </header>
         <p>{todoList.length} item(s)</p>
         {showList && (
-          <ul>
+          <ul className="TodoList">
             {todoList.map((todo) => (
               <TodoItem
                 key={todo.id}
