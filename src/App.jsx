@@ -1,63 +1,39 @@
 import { useState } from "react";
+import AddNewTodo from "./components/AddNewTodo.jsx";
+import TodoList from "./components/TodoList.jsx";
 
 const App = () => {
-  const [todoList, setTodoList] = useState([
-    "display todo items",
-    "make todo items stateful",
-    "create a new todo item",
-  ]);
-  const [newTask, setNewTask] = useState("");
+  const [todoList, setTodoList] = useState([]);
+  const [newTodo, setNewTodo] = useState("");
 
-  const handNewTaskChange = (event) => setNewTask(event.target.value);
+  const handNewTodoChange = (event) => setNewTodo(event.target.value);
 
-  const handleNewTaskSubmit = (event) => {
+  const handleNewTodoSubmit = (event) => {
     event.preventDefault();
-    if (!newTask) return;
 
-    setTodoList([newTask, ...todoList]);
+    if (!newTodo) return;
+
+    setTodoList([newTodo, ...todoList]);
+    setNewTodo("");
+  };
+
+  const handleMarkTodoDone = (todo) => {
+    const newTodoList = todoList.filter(
+      (item, index) => `${item}-${index}` !== todo.id
+    );
+
+    setTodoList(newTodoList);
   };
 
   return (
     <>
       <h1>Metodo</h1>
-      <AddNewTask
-        newTask={newTask}
-        onNewTaskChange={handNewTaskChange}
-        onNewTaskSubmit={handleNewTaskSubmit}
+      <AddNewTodo
+        newTodo={newTodo}
+        onNewTodoChange={handNewTodoChange}
+        onNewTodoSubmit={handleNewTodoSubmit}
       />
-      <TodoList todoList={todoList} />
-    </>
-  );
-};
-
-const AddNewTask = ({ newTask, onNewTaskChange, onNewTaskSubmit }) => {
-  return (
-    <>
-      <form onSubmit={onNewTaskSubmit}>
-        <label htmlFor="newtask">New task:</label>
-        <input
-          type="text"
-          name="newtask"
-          id="newtask"
-          value={newTask}
-          onChange={onNewTaskChange}
-        />
-        <button type="submit" disabled={!newTask}>
-          Add
-        </button>
-      </form>
-    </>
-  );
-};
-
-const TodoList = ({ todoList }) => {
-  return (
-    <>
-      <ul>
-        {todoList.map((todo, index) => (
-          <li key={`${todo}-${index}`}>{todo}</li>
-        ))}
-      </ul>
+      <TodoList todoList={todoList} onDoItem={handleMarkTodoDone} />
     </>
   );
 };
