@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Heading from "./components/Heading.jsx";
 import AddNewTodo from "./components/AddNewTodo.jsx";
 import TodoList from "./components/TodoList.jsx";
 
@@ -42,7 +43,7 @@ const App = () => {
 
   return (
     <>
-      <h1>Metodo</h1>
+      <Heading title={"metodo"} />
       <AddNewTodo
         newTodo={newTodo}
         onNewTodoChange={handNewTodoChange}
