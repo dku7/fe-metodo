@@ -4,13 +4,8 @@ const TodoList = ({ todoList, onDoItem }) => {
   return (
     <>
       <ul>
-        {todoList.map((todo, index) => (
-          <TodoItem
-            key={`${todo}-${index}`}
-            todo={todo}
-            id={`${todo}-${index}`}
-            onDoItem={onDoItem}
-          />
+        {todoList.map((todo) => (
+          <TodoItem key={todo.id} todo={todo} onDoItem={onDoItem} />
         ))}
       </ul>
     </>

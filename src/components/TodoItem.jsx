@@ -1,9 +1,9 @@
-const TodoItem = ({ todo, id, onDoItem }) => (
+const TodoItem = ({ todo, onDoItem }) => (
   <li>
-    {todo}
+    {todo.todo}
     <button
       onClick={() => {
-        onDoItem({ id });
+        onDoItem(todo.id);
       }}>
       Done
     </button>
