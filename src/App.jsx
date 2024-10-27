@@ -37,8 +37,6 @@ const App = () => {
     const todo = newTodoList.find((todo) => todo.id === id);
     todo.complete = true;
 
-    //todoList.filter((todo) => todo.id !== id);
-
     setTodoList(newTodoList);
   };
 
