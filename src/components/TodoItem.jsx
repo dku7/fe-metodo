@@ -5,11 +5,11 @@ const TodoItem = ({ todo, onDoItem, onDeleteItem }) => {
 
   return (
     <li>
-      {todo.title}
-
-      <button onClick={() => setIsNotesVisible(!isNotesVisible)}>
-        Show notes
-      </button>
+      <a
+        className="TodoItem__link"
+        onClick={() => setIsNotesVisible(!isNotesVisible)}>
+        {todo.title}
+      </a>
       <button onClick={() => onDoItem(todo.id)}>Done</button>
       <button onClick={() => onDeleteItem(todo.id)}>Delete</button>
       {isNotesVisible && <p>{todo.notes}</p>}
