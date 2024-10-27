@@ -5,14 +5,21 @@ const TodoItem = ({ todo, onDoItem, onDeleteItem }) => {
 
   return (
     <li>
-      <a
-        className="TodoItem__link"
+      <input
+        type="checkbox"
+        name={todo.title}
+        id={todo.id}
+        value={todo.title}
+        onClick={() => onDoItem(todo.id)}
+        checked={todo.complete ? "checked" : ""}
+      />
+      <label
+        className="TodoItem__item-title"
         onClick={() => setIsNotesVisible(!isNotesVisible)}>
         {todo.title}
-      </a>
-      <button onClick={() => onDoItem(todo.id)}>Done</button>
+      </label>
       <button onClick={() => onDeleteItem(todo.id)}>Delete</button>
-      {isNotesVisible && <p>{todo.notes}</p>}
+      <p className="TodoItem__notes">{isNotesVisible && todo.notes}</p>
     </li>
   );
 };

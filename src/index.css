@@ -1,4 +1,9 @@
-.TodoItem__link {
+.TodoItem__notes {
+  border-bottom: solid 1px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+}
+.TodoItem__item-title {
   cursor: pointer;
 
   &:hover {
