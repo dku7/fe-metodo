@@ -19,10 +19,13 @@ const App = () => {
   const [todoList, setTodoList] = useStorageState("todolist", []);
   const [newTodoTitle, setNewTodoTitle] = useState("");
   const [newTodoNotes, setNewTodoNotes] = useState("");
+  const [newTodoDueDate, setNewTodoDueDate] = useState(null);
 
   const handNewTodoTitleChange = (event) => setNewTodoTitle(event.target.value);
   const handleNewTodoNotesChange = (event) =>
     setNewTodoNotes(event.target.value);
+  const handleNewTodoDueDateChange = (event) =>
+    setNewTodoDueDate(event.target.value);
 
   const handleNewTodoSubmit = (event) => {
     event.preventDefault();
@@ -33,6 +36,7 @@ const App = () => {
       title: newTodoTitle,
       notes: newTodoNotes,
       id: Date.now(),
+      due_date: newTodoDueDate,
       complete: false,
     };
 
@@ -62,8 +66,10 @@ const App = () => {
       <AddNewTodo
         newTodoTitle={newTodoTitle}
         newTodoNotes={newTodoNotes}
+        newTodoDueDate={newTodoDueDate}
         onNewTodoTitleChange={handNewTodoTitleChange}
         onNewTodoNotesChange={handleNewTodoNotesChange}
+        onNewTodoDueDateChange={handleNewTodoDueDateChange}
         onNewTodoSubmit={handleNewTodoSubmit}
       />
       <TodoList
