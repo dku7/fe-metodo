@@ -11,7 +11,10 @@ const TodoList = ({ heading, todoList, onDoItem, onDeleteItem, isVisible }) => {
       <section>
         <header>
           <h2>
-            {heading} <button onClick={handleShowList}>Toggle</button>
+            {heading}{" "}
+            <button onClick={handleShowList}>
+              {showList ? "Hide" : "Show"}
+            </button>
           </h2>
         </header>
         <p>{todoList.length} item(s)</p>
