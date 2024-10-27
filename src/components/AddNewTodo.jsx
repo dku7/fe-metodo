@@ -1,8 +1,8 @@
 const AddNewTodo = ({
   newTodoTitle,
-  newTodoDescription,
+  newTodoNotes,
   onNewTodoTitleChange,
-  onNewTodoDescriptionChange,
+  onNewTodoNotesChange,
   onNewTodoSubmit,
 }) => {
   return (
@@ -17,12 +17,12 @@ const AddNewTodo = ({
           onChange={onNewTodoTitleChange}
           required
         />
-        <label htmlFor="todo-description">Description</label>
+        <label htmlFor="todo-notes">Notes</label>
         <textarea
-          name="todo-description"
-          id="todo-description"
-          value={newTodoDescription}
-          onChange={onNewTodoDescriptionChange}></textarea>
+          name="todo-notes"
+          id="todo-notes"
+          value={newTodoNotes}
+          onChange={onNewTodoNotesChange}></textarea>
         <button type="submit" disabled={!newTodoTitle}>
           Add
         </button>
