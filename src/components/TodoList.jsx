@@ -14,6 +14,7 @@ const TodoList = ({ heading, todoList, onDoItem, isVisible }) => {
             {heading} <button onClick={handleShowList}>Toggle</button>
           </h2>
         </header>
+        <p>{todoList.length} item(s)</p>
         {showList && (
           <ul>
             {todoList.map((todo) => (
