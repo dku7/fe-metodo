@@ -1,3 +1,37 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+body {
+  margin: 30px;
+}
+
+.AddNewTodo {
+  width: 300px;
+}
+
+.AddNewTodo__fieldset {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.AddNewTodo__fieldset > label,
+.AddNewTodo__fieldset > button {
+  display: block;
+  margin-top: 10px;
+}
+
+.AddNewTodo__title,
+.AddNewTodo__notes {
+  width: 300px;
+}
+
+.AddNewTodo__notes {
+  height: 100px;
+}
 .TodoItem__notes {
   border-bottom: solid 1px;
   margin-bottom: 15px;
