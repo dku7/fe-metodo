@@ -1,10 +1,14 @@
-const AddNewTodo = ({
-  newTodoTitle,
-  newTodoNotes,
-  onNewTodoTitleChange,
-  onNewTodoNotesChange,
-  onNewTodoSubmit,
-}) => {
+const AddNewTodo = (props) => {
+  const {
+    newTodoTitle,
+    newTodoNotes,
+    newTodoDueDate,
+    onNewTodoTitleChange,
+    onNewTodoNotesChange,
+    onNewTodoDueDateChange,
+    onNewTodoSubmit,
+  } = props;
+
   return (
     <div className="AddNewTodo">
       <form onSubmit={onNewTodoSubmit}>
@@ -27,6 +31,14 @@ const AddNewTodo = ({
             id="todo-notes"
             value={newTodoNotes}
             onChange={onNewTodoNotesChange}></textarea>
+          <label htmlFor="todo-due-date">Due date:</label>
+          <input
+            type="date"
+            name="todo-due-date"
+            id="todo-due-date"
+            value={newTodoDueDate}
+            onChange={onNewTodoDueDateChange}
+          />
           <button type="submit" disabled={!newTodoTitle}>
             Add
           </button>

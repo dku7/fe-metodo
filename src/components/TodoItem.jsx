@@ -19,7 +19,14 @@ const TodoItem = ({ todo, onDoItem, onDeleteItem }) => {
         {todo.title}
       </label>
       <button onClick={() => onDeleteItem(todo.id)}>Delete</button>
-      <p className="TodoItem__notes">{isNotesVisible && todo.notes}</p>
+      <div className="TodoItem__notes">
+        {isNotesVisible && (
+          <>
+            <p>Notes: {todo.notes}</p>
+            <p>Due date: {todo.due_date}</p>
+          </>
+        )}
+      </div>
     </li>
   );
 };
