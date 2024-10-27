@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TodoItem from "./TodoItem.jsx";
 
-const TodoList = ({ heading, todoList, onDoItem, isVisible }) => {
+const TodoList = ({ heading, todoList, onDoItem, onDeleteItem, isVisible }) => {
   const [showList, setShowList] = useState(isVisible);
 
   const handleShowList = () => setShowList(!showList);
@@ -18,7 +18,12 @@ const TodoList = ({ heading, todoList, onDoItem, isVisible }) => {
         {showList && (
           <ul>
             {todoList.map((todo) => (
-              <TodoItem key={todo.id} todo={todo} onDoItem={onDoItem} />
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onDoItem={onDoItem}
+                onDeleteItem={onDeleteItem}
+              />
             ))}
           </ul>
         )}
