@@ -36,7 +36,7 @@ const App = () => {
     const newTodoList = [...todoList];
 
     const todo = newTodoList.find((todo) => todo.id === id);
-    todo.complete = true;
+    todo.complete = !todo.complete;
 
     setTodoList(newTodoList);
   };
@@ -49,7 +49,21 @@ const App = () => {
         onNewTodoChange={handNewTodoChange}
         onNewTodoSubmit={handleNewTodoSubmit}
       />
-      <TodoList todoList={todoList} onDoItem={handleMarkTodoDone} />
+      <TodoList
+        heading={"Open items"}
+        todoList={todoList.filter((todo) => !todo.complete)}
+        onDoItem={handleMarkTodoDone}
+        isVisible={true}
+      />
+
+      <hr />
+
+      <TodoList
+        heading={"Completed items"}
+        todoList={todoList.filter((todo) => todo.complete)}
+        onDoItem={handleMarkTodoDone}
+        isVisible={false}
+      />
     </>
   );
 };
