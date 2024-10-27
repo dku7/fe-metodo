@@ -41,6 +41,12 @@ const App = () => {
     setTodoList(newTodoList);
   };
 
+  const handleDeleteTodo = (id) => {
+    const newTodoList = todoList.filter((todo) => todo.id !== id);
+
+    setTodoList([...newTodoList]);
+  };
+
   return (
     <>
       <Heading title={"metodo"} />
@@ -53,6 +59,7 @@ const App = () => {
         heading={"Open items"}
         todoList={todoList.filter((todo) => !todo.complete)}
         onDoItem={handleMarkTodoDone}
+        onDeleteItem={handleDeleteTodo}
         isVisible={true}
       />
 
@@ -62,6 +69,7 @@ const App = () => {
         heading={"Completed items"}
         todoList={todoList.filter((todo) => todo.complete)}
         onDoItem={handleMarkTodoDone}
+        onDeleteItem={handleDeleteTodo}
         isVisible={false}
       />
     </>
