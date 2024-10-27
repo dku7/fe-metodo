@@ -4,7 +4,7 @@ const TodoItem = ({ todo, onDoItem, onDeleteItem }) => {
   const [isNotesVisible, setIsNotesVisible] = useState(false);
 
   return (
-    <li>
+    <li className="TodoItem">
       <input
         type="checkbox"
         name={todo.title}
