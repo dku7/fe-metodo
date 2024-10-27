@@ -25,14 +25,19 @@ const App = () => {
 
     if (!newTodo) return;
 
-    const todo = { todo: newTodo, id: Date.now() };
+    const todo = { todo: newTodo, id: Date.now(), complete: false };
 
     setTodoList([todo, ...todoList]);
     setNewTodo("");
   };
 
   const handleMarkTodoDone = (id) => {
-    const newTodoList = todoList.filter((todo) => todo.id !== id);
+    const newTodoList = [...todoList];
+
+    const todo = newTodoList.find((todo) => todo.id === id);
+    todo.complete = true;
+
+    //todoList.filter((todo) => todo.id !== id);
 
     setTodoList(newTodoList);
   };
