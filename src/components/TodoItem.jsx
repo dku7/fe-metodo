@@ -4,7 +4,7 @@ const TodoItem = ({ todo, onDoItem, onDeleteItem }) => {
   const [isNotesVisible, setIsNotesVisible] = useState(false);
 
   return (
-    <li className="TodoItem">
+    <li>
       <input
         type="checkbox"
         name={todo.title}
@@ -14,16 +14,25 @@ const TodoItem = ({ todo, onDoItem, onDeleteItem }) => {
         checked={todo.complete ? "checked" : ""}
       />
       <label
-        className="TodoItem__item-title"
+        className="mx-5 hover:underline hover:cursor-pointer"
+        htmlFor={todo.id}
         onClick={() => setIsNotesVisible(!isNotesVisible)}>
         {todo.title}
       </label>
-      <button onClick={() => onDeleteItem(todo.id)}>Delete</button>
-      <div className="TodoItem__notes">
+      <button
+        className="hover:underline hover:cursor-pointer"
+        onClick={() => onDeleteItem(todo.id)}>
+        Delete
+      </button>
+      <div className="text-sm ml-8 pt-4">
         {isNotesVisible && (
           <>
-            <p>Notes: {todo.notes}</p>
-            <p>Due date: {todo.due_date}</p>
+            <p>
+              <strong>Notes</strong>: {todo.notes}
+            </p>
+            <p>
+              <strong>Due date</strong>: {todo.due_date}
+            </p>
           </>
         )}
       </div>

@@ -10,16 +10,18 @@ const TodoList = ({ heading, todoList, onDoItem, onDeleteItem, isVisible }) => {
     <>
       <section>
         <header>
-          <h2>
+          <h2 className="text-xl font-bold">
             {heading}{" "}
-            <button onClick={handleShowList}>
+            <button
+              className="text-base font-normal border border-solid border-blue-700 rounded px-4 bg-blue-700 text-white"
+              onClick={handleShowList}>
               {showList ? "Hide" : "Show"}
             </button>
           </h2>
         </header>
         <p>{todoList.length} item(s)</p>
         {showList && (
-          <ul className="TodoList">
+          <ul>
             {todoList.map((todo) => (
               <TodoItem
                 key={todo.id}

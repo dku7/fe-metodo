@@ -61,7 +61,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className="mx-10">
       <Heading title={"metodo"} />
       <AddNewTodo
         newTodoTitle={newTodoTitle}
@@ -80,7 +80,7 @@ const App = () => {
         isVisible={true}
       />
 
-      <hr />
+      <hr className="my-5" />
 
       <TodoList
         heading={"Completed items"}
@@ -89,7 +89,7 @@ const App = () => {
         onDeleteItem={handleDeleteTodo}
         isVisible={false}
       />
-    </>
+    </div>
   );
 };
 
