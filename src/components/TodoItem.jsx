@@ -15,7 +15,6 @@ const TodoItem = ({ todo, onDoItem, onDeleteItem }) => {
       />
       <label
         className="mx-5 hover:underline hover:cursor-pointer"
-        htmlFor={todo.id}
         onClick={() => setIsNotesVisible(!isNotesVisible)}>
         {todo.title}
       </label>
